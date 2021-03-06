@@ -10,7 +10,11 @@ const Tab = createMaterialBottomTabNavigator();
 
 export default  function Tabs() {
   return (
+    
     <Tab.Navigator
+  
+      
+       
     initialRouteName="Home"
     activeColor="red"
     inactiveColor="#000"
@@ -38,9 +42,10 @@ export default  function Tabs() {
         
     
   >
-      <Tab.Screen name="movie" component={Home}   options={{   }} />
+      <Tab.Screen name="movie" component={Home}   options={{       }} />
       <Tab.Screen name="Search" component={Search} />
      <Tab.Screen name="Mylist" component={List} />
+     
     </Tab.Navigator>
   );
 }

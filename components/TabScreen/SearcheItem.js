@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View,Image } from 'react-native';
 
-export default function item({item}) {
+export default function SearcheItem({item}) {
   const url = `https://image.tmdb.org/t/p/original`+item.poster_path
   return (
       <View style={styles.container}>

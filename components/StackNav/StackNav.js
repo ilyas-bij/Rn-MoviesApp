@@ -16,18 +16,20 @@ export default function StackNav() {
   
   
     return (
+     
+
         <Stack.Navigator
         screenOptions={{
-          headerShown: true
+          headerShown: false
         }}
         >
-         
           <Stack.Screen name="Tab" component={Tab} options={{}}/>
-          <Stack.Screen name="home" component={Home}  />
+          <Stack.Screen name="home" component={Home} options={{ headerShown: false}}/>
           <Stack.Screen name="Detail" component={Detail}  />
           
 
           </Stack.Navigator>
+          
     )
 }
 

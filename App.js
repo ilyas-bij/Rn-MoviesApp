@@ -8,7 +8,7 @@ import StackNav from "./components/StackNav/StackNav";
 export default function App() {
   return (
   
-      
+    
       <NavigationContainer >
       <StackNav />
    </NavigationContainer>

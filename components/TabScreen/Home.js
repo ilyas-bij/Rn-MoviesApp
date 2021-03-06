@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React ,{useState, useEffect} from 'react';
-import { StyleSheet, Text, View ,Pressable,SafeAreaView,FlatList } from 'react-native';
+import { StyleSheet, Text, View ,Pressable,SafeAreaView,FlatList,ImageBackground,TouchableOpacity } from 'react-native';
 import { Ionicons,AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
+import Item from '../TabScreen/Item'
+
 
 
 export default function Home({navigation}) {
@@ -33,31 +35,57 @@ export default function Home({navigation}) {
  
   fetchItems()
 }, [])
-
+//render function ***********************************************************************
 const renderItem = ({ item }) => (
- <Text style={{backgroundColor:'#DDD'}}> {item.original_title}</Text>
+ //<Text style={{backgroundColor:'#DDD'}}> {item.original_title}</Text>
+<TouchableOpacity  onPress={() => navigation.navigate('Detail',{item:item})}>
+      <Item item={item}/>
+ </TouchableOpacity>
+
 );
  
   return (
     
     <View style={styles.container}>
-       <Pressable
-        style={{marginTop:30}}
-        onPress={() => console.log(Data)}
-      >
-        <Text style={styles.text}>get started</Text>
-      </Pressable>
+    <StatusBar style="dark" />
+
+    <ImageBackground 
+    style={{width: "100%", height: "100%",backgroundColor:"#404040a6" }} 
+    
+    source={require("../../assets/account.png")}
+>
+
+{/* start header  **********************************************************************/}
+
+    <View
+    style={{height:80}}
+    >
+        
+
+        <View
+    style={{backgroundColor:"#FFF",height:75,borderBottomRightRadius:25,}}
+    >        
+                      <Text style={styles.text}>Moveis/App</Text>
+
+             
+           
+            </View>
+    </View>
+{/* end header  **********************************************************************/}
+
         <SafeAreaView >
       <FlatList
+      style={{marginBottom:80}}
         data={Data}
-        
+        showsHorizontalScrollIndicator={false}
         renderItem={renderItem}
         keyExtractor={(item,index) => 'key'+index}
       />
       
     </SafeAreaView>
    
-      <StatusBar style="auto" />
+      
+      </ImageBackground>
     </View>
   );
 }
@@ -66,8 +94,14 @@ const renderItem = ({ item }) => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor:'#FFF',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text:{textAlign:'center',
+  marginTop:35,fontSize:20,
+  color:"red"
+
+  
+}
 });
