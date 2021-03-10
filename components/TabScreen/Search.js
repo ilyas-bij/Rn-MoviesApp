@@ -10,7 +10,7 @@ export default function Search({navigation}) {
 
 const [search,setsearch]=useState('')
 const [Moveis,setmoveis]=useState([])
-const [api,setapi]=useState('https://api.themoviedb.org/3/search/multi?api_key=b6958e0f1dfb582b43656f847c0a9822&language=en-US&query=F&page=1&include_adult=false')
+const [api,setapi]=useState('https://api.themoviedb.org/3/search/multi?api_key=b6958e0f1dfb582b43656f847c0a9822&language=en-US&query=R&page=1&include_adult=false')
   //console.log(search)
 
 
@@ -21,7 +21,7 @@ const [api,setapi]=useState('https://api.themoviedb.org/3/search/multi?api_key=b
   setapi(api)
   const result = await axios(api)
   .then(function (response) {
-    console.log(response);
+    //console.log(response);
     setmoveis(response.data.results)
   })
 

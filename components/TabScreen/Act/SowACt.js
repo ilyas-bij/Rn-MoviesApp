@@ -22,7 +22,7 @@ export default function SowACt({item}) {
       )
 
       .then(function (response) {
-        console.log(response);
+       // console.log(response);
         setcast(response.data.cast)
        
       })

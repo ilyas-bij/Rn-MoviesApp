@@ -1,17 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View,ScrollView ,Pressable,Image} from 'react-native';
-import { MaterialIcons,Entypo,AntDesign } from '@expo/vector-icons';
+import { MaterialIcons,Entypo,AntDesign,Ionicons } from '@expo/vector-icons';
 import Act from '../TabScreen/Act/SowACt'
 import { LinearGradient } from 'expo-linear-gradient'
 
 export default function Detail({ navigation,route}) {
   const item = route.params?.item;
+  const List = route.params?.List;
+  const Add = route.params?.AddNew;
+
+
+ 
+
  // console.log(item)
 const Imges =({imge})=>{
   
   const url = `https://image.tmdb.org/t/p/original`+imge
-  console.log(url)
+ // console.log(url)
   return (
     <View>
      
@@ -53,13 +59,13 @@ const Imges =({imge})=>{
                               <Pressable
                                       onPress={() => navigation.goBack()}>
                                   <View style={styles.rigth}>
-                                  <Entypo name="home" size={26} color="black"  style={{ textAlign: 'center', marginTop:8 }} />
+                                  <Ionicons name="md-arrow-back" size={24} color="black"  style={{ textAlign: 'center', marginTop:8 }} /> 
                                   </View>
                         </Pressable>
                    </View>
                    <View style={{width:"50%", alignItems:"flex-end",flexDirection:"row"}}>
                            <Pressable style={{marginLeft:50}}
-                                      onPress={() => navigation.goBack()}>
+                                      onPress={() => Add(item)}>
                                   <View style={styles.rigth}>
                                   <AntDesign name="like1" size={26} color="black" style={{ textAlign: 'center', marginTop:8 }}/>
                                   </View>
@@ -67,7 +73,7 @@ const Imges =({imge})=>{
                           </Pressable>
                           <Pressable
                           style={{marginLeft:5}}
-                                      onPress={() => navigation.goBack()}>
+                                      onPress={() => navigation.navigate('Mylist')}>
                                   <View style={styles.rigth}>
                                   <MaterialIcons name="add" size={30} color="black" style={{ textAlign: 'center', marginTop:8 }}/>
                                   </View>
@@ -100,8 +106,11 @@ const Imges =({imge})=>{
         <Text style={styles.Ptitel}>
         {item.original_title}
         </Text>
-        <Text style={styles.Pprix}>
-        {item.release_date} 
+        <Text style={styles.sub}>
+        release_date : {item.release_date} 
+        </Text>
+        <Text style={styles.sub}>
+        vote_average : {item.vote_average} 
         </Text>
     
         <Text style={styles.Ptitel}>
@@ -128,11 +137,12 @@ const styles = StyleSheet.create({
     marginHorizontal:10,
     marginVertical:5,
     fontWeight: '700',
-    fontSize:25
+    fontSize:25,
+    marginLeft: 25
   },
 
-  Pprix:{
-    marginLeft:25,
+  sub:{
+    marginLeft:40,
     marginRight:9,
     marginVertical:2,
     marginTop:10,

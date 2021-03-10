@@ -1,26 +1,35 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import Home from "../TabScreen/Home";
-import List from "../TabScreen/List";
+import Lists from "../TabScreen/List";
 import Search from "../TabScreen/Search";
 import { Ionicons,MaterialCommunityIcons,Feather } from '@expo/vector-icons';
 const Tab = createMaterialBottomTabNavigator();
 
-export default  function Tabs() {
+export default  function Tabs({route}) {
+  const len = route.params?.len;
+  
+ 
+ 
   return (
     
     <Tab.Navigator
   
       
-       
+  
     initialRouteName="Home"
     activeColor="red"
     inactiveColor="#000"
     barStyle={{ backgroundColor: '#FFF',opacity:0.6 }}
       
     screenOptions={({ route }) => ({
+
+      tabBarVisible: ({routes}) => {
+             let tabBarVisible = false;
+             console.log('screens', routes); // Not log anything!
+             return {tabBarVisible};
+            },
       showIcon: true,
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -44,7 +53,6 @@ export default  function Tabs() {
   >
       <Tab.Screen name="movie" component={Home}   options={{       }} />
       <Tab.Screen name="Search" component={Search} />
-     <Tab.Screen name="Mylist" component={List} />
      
     </Tab.Navigator>
   );

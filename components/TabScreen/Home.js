@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React ,{useState, useEffect} from 'react';
 import { StyleSheet, Text, View ,Pressable,SafeAreaView,FlatList,ImageBackground,TouchableOpacity } from 'react-native';
-import { Ionicons,AntDesign } from '@expo/vector-icons';
+import { Ionicons,MaterialIcons } from '@expo/vector-icons';
 import axios from 'axios';
 import Item from '../TabScreen/Item'
 
@@ -57,20 +57,28 @@ const renderItem = ({ item }) => (
 
 {/* start header  **********************************************************************/}
 
-    <View
-    style={{height:80}}
-    >
+   
         
 
         <View
-    style={{backgroundColor:"#FFF",height:75,borderBottomRightRadius:25,}}
+    style={{backgroundColor:"#FFF",height:80,borderBottomRightRadius:25,flexDirection:'row',width:'100%'}}
     >        
-                      <Text style={styles.text}>Moveis/App</Text>
 
-             
-           
+                      
+                      <View style={styles.Name}>
+                        <Text style={styles.text}>Moveis App</Text>
+                      </View>
+                      <View style={styles.List}>
+                      <TouchableOpacity  onPress={() =>navigation.navigate('Mylist')}>
+
+                      <MaterialIcons name="my-library-books" size={24} color="black" style={{opacity:0.6}} />    
+                      </TouchableOpacity> 
+                       </View>
+                     
+
             </View>
-    </View>
+
+       
 {/* end header  **********************************************************************/}
 
         <SafeAreaView >
@@ -92,16 +100,26 @@ const renderItem = ({ item }) => (
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor:'#FFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text:{textAlign:'center',
-  marginTop:35,fontSize:20,
-  color:"red"
+  
+  text:{
+    
+    textAlign:'center',
+  marginTop:35,
+  fontSize:20,
+  color:"red",  
+  opacity:0.7
 
   
+},
+List:{
+  marginTop:40,
+  width:'22%',
+  alignItems:"flex-end",
+  flexDirection:'column'
+}
+,Name:{
+  marginLeft:'29%',
+  width:'40%',
+  alignItems:'center'
 }
 });
